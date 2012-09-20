@@ -25,7 +25,7 @@ function wd_func() {
   $vars = array(
     '!func' => $caller['function'],
     '!line' => $caller['line'],
-    '!file' => substr($caller['file'], strlen(getcmd()) + 1), // Remove site root and leading '/'
+    '!file' => substr($caller['file'], strlen(getcwd()) + 1), // Remove site root and leading '/'
     '!args' => print_r($caller['args'], TRUE)
   );
   watchdog('debug', 'Called !func at line !line of !file with !args', $vars, WATCHDOG_DEBUG);
