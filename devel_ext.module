@@ -11,12 +11,23 @@
  */
 function wd() {
   $args = func_get_args();
-  $type = 'debug';
-  $severity = WATCHDOG_DEBUG;
-  $link = $_GET['q'];
-  $variables = array();
   $args = (count($args) <= 1) ? array_shift($args) : $args;
   $message = print_r($args, TRUE);
-  watchdog($type, $message, $variables, $severity, $link);
+  watchdog('debug', $message, NULL, WATCHDOG_DEBUG);
+}
+
+/**
+ * Logs function call info
+ */
+function wd_func() {
+  $trace = debug_backtrace();
+  $caller = $trace[1];
+  $vars = array(
+    '!func' => $caller['function'],
+    '!line' => $caller['line'],
+    '!file' => substr($caller['file'], strlen(getcmd()) + 1); // Remove site root and leading '/'
+    '!args' => print_r($caller['args'], TRUE)
+  );
+  watchdog('debug', 'Called !func at line !line of !file with !args', $vars, WATCHDOG_DEBUG);
 }
 
