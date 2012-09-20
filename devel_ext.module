@@ -27,6 +27,6 @@ function wd_func() {
     '!line' => $caller['line'],
     '!file' => substr($caller['file'], strlen(getcwd()) + 1), // Remove site root and leading '/'
   );
-  watchdog('debug', 'Called !func at line !line of !file with', $vars, WATCHDOG_DEBUG);
+  watchdog('debug', "!func\ncalled at line !line of !file", $vars, WATCHDOG_DEBUG);
 }
 
