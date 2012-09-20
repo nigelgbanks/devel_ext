@@ -1,0 +1,6 @@
+name = Devel Ext - My additions to devel.
+dependencies[] = devel
+description = Some debug stuff
+package = devel
+version = 6.x-1.x-dev
+core = 6.x
