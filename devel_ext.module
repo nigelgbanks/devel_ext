@@ -15,6 +15,6 @@ function wd() {
   $severity = WATCHDOG_DEBUG;
   $link = $_GET['q'];
   $variables = array();
-  $message = print_r($args);
+  $message = print_r($args, TRUE);
   watchdog($type, $message, $variables, $severity, $link);
 }
