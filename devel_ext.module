@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ *
+ * Just a bunch of debugging junk to make my life easier.
+ */
+
+/**
+ * Debug Wrapper to the watch dog function, for printing variables to the log
+ */
+function wd() {
+  $args = func_get_args();
+  $type = 'debug';
+  $severity = WATCHDOG_DEBUG;
+  $link = $_GET['q'];
+  $variables = array();
+  $message = print_r($args);
+  watchdog($type, $message, $variables, $severity, $link);
+}
