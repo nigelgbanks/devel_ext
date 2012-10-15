@@ -30,3 +30,9 @@ function wd_func() {
   watchdog('debug', "!func\ncalled at line !line of !file", $vars, WATCHDOG_DEBUG);
 }
 
+/**
+ * Prints the arguments to the apache log.
+ */
+function elog() {
+  error_log(print_r(func_get_args(), TRUE));
+}
